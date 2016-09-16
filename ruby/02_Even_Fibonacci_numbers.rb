@@ -6,9 +6,12 @@
 
 def even_fib_numbers(num)
     a, b, sum = 1, 1, 0
-    while b < num
-        a, b = b, a + b
-        sum += b if b.even?
+    c = a + b
+    until c > num
+        sum += c
+        a = b + c
+        b = c + a
+        c = a + b
     end
     sum
 end
