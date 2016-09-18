@@ -7,7 +7,8 @@ def largest_palindrome_product(numberOfDigit)
     result = 1
     (10 ** numberOfDigit - 1).downto(10 ** (numberOfDigit - 1)) do |i|
         (10 ** numberOfDigit - 1).downto(10 ** (numberOfDigit - 1)) do |k|
-            result = i * k if is_palindrome?(i * k) && i * k > result
+            break if i * k < result
+            result = i * k if is_palindrome?(i * k)
         end
     end
     result

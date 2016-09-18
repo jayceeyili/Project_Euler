@@ -9,9 +9,8 @@ function largestPalindromeProduct(numberOfDigit) {
     var limit_l = Math.pow(10, (numberOfDigit -1))
     for (var i = limit_h; i >= limit_l; i--) {
         for (var k = limit_h; k >= limit_l; k--) {
-            if (isPalindrome(i * k) && (i * k > result)) {
-                result = i * k;
-            }
+            if (i * k < result) break;
+            if (isPalindrome(i * k)) result = i * k;
         }
     }
     return result;
