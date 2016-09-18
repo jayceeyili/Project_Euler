@@ -2,15 +2,19 @@
 # What is the largest prime factor of the number 600851475143 ?
 
 def largest_prime_factor(num)
-    factor = 2
+    if num % 2 == 0
+        num /= 2 until num % 2 != 0
+    end
+    factor = 3
     while num > 1
         if num % factor == 0
             num /= factor until num % factor != 0
         else
-            factor += 1
+            factor += 2
         end
-        return num if factor * factor > num
+        return num if factor * factor > num && num > 1
     end
+    factor
 end
 
 p(largest_prime_factor(600851475143))
