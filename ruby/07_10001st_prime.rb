@@ -21,13 +21,16 @@ def nthPrime(n)
 end
 
 def isPrime(number)
-
     return false if number < 2
+    return true if number < 4
+    return false if number % 2 == 0
+    return true if number < 9
+    return false if number % 3 == 0
 
-    i = 2
-    while i * i <= number
-        return false if number % i == 0
-        i += 1
+    factor = 5
+    until factor * factor > number
+        return false if number % factor == 0 || number % (factor + 2) == 0
+        factor += 6
     end
 
     true

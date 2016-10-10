@@ -19,16 +19,18 @@ function nthPrime(n) {
     }
 }
 
-function isPrime(num) {
+function isPrime(n) {
+    if (n < 2) return false;
+    if (n < 4) return true;
+    if (n % 2 === 0) return false;
+    if (n < 9) return true;
+    if (n % 3 === 0) return false;
 
-    if (num < 2) return false;
+    var i = 5, limit = Math.floor(Math.sqrt(n));
 
-    var i = 2;
-    while (i * i <= num) {
-
-        if (num % i === 0) return false;
-
-        i++;
+    while (i <= limit) {
+        if (n % i === 0 || n % (i + 2) === 0) return false;
+        i += 6;
     }
 
     return true;
