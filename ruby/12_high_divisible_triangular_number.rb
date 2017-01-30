@@ -40,11 +40,7 @@ def divisor_counter(n)
 end
 
 def triangle_number(nth)
-    n = 0
-
-    0.upto(nth) { |i| n += i }
-
-    n
+    nth * (nth + 1) / 2
 end
 
 def highly_divisible_triangle_number(nfactors)

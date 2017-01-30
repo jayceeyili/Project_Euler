@@ -25,22 +25,35 @@
 //
 // What is the value of the first triangle number to have over five hundred divisors?
 
-var isPrime = n => {
-    if (n < 2) return false;
-    if (n < 4) return true;
-    if (n % 2 === 0) return false;
-    if (n < 9) return true;
-    if (n % 3 === 0) return false;
+let divisorCounter = n => {
+  var i = 1,
+      count = 0;
 
-    var i = 5,
-        limit = Math.floor(Math.sqrt(n));
-
-    while (i <= limit) {
-        if (n % i === 0 || n % (i + 2) === 0) return false;
-        i += 6;
+  while (i * i <= n) {
+    if (n % i === 0) {
+      count++;
+      if (i * i !== n) {
+        count++;
+      }
     }
+    i++;
+  }
 
-    return true;
-}
+  return count;
+};
 
-console.log(isPrime(97));
+let triangleNumner = nth => nth * (nth + 1) / 2;
+
+let highlyDivisibleTriangleNumber = nfactors => {
+  var i = 0,
+      n = 1;
+
+  while (n <= nfactors) {
+    i++;
+    n = divisorCounter(triangleNumner(i));
+  }
+
+  return triangleNumner(i);
+};
+
+console.log(highlyDivisibleTriangleNumber(500));
